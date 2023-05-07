@@ -1,0 +1,42 @@
+.footericon_container {
+	background-color: var(--darkgreen-color);
+	padding: 40px 10px;
+}
+.footericon_iconstext {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 60px;
+}
+
+.footericon_icons {
+	position: relative;
+}
+.footericon_icons > a {
+	text-decoration: none;
+	margin-right: 50px;
+}
+
+.footericon_icon:hover {
+	border: 4px solid var(--white-color);
+	position: absolute;
+
+}
+.footericon_icon {
+	width: 20px;
+	height: 20px;
+	color: var(--white-color);
+	padding: 5px;
+	position: absolute;
+}
+.footericon_text {
+	font-size: 15px;
+	font-family: "DM Sans Regular";
+	color: var(--white-color);
+	margin: 20px;
+	text-decoration: none;
+}
+.footericon_text:hover {
+	border-bottom: 2px solid var(--white-color);
+}
