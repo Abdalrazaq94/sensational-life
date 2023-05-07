@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: sensational-life-asd
+  - name: sensational-life.
     buildpacks:
       - https://github.com/cloudfoundry/nodejs-buildpack.git#v1.7.61
     stack: cflinuxfs3
