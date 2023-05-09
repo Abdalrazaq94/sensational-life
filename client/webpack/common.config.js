@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	entry: "./client/src/index.js",
+
 	module: {
 		rules: [
 			{
