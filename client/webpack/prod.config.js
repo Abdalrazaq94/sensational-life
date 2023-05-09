@@ -1,12 +1,13 @@
+const path = require("node:path");
+
 const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
-const path = require("path");
 const { merge } = require("webpack-merge");
 
 const common = require("./common.config");
 const { devDependencies } = require("../../package.json");
 
 module.exports = merge(common, {
-	devtool: "source-map",
+	devtool: process.env.GENERATE_SOURCEMAP !== "false" && "source-map",
 	mode: "production",
 	optimization: {
 		runtimeChunk: "single",
