@@ -1,18 +1,14 @@
 import http from "node:http";
+import app from "./app.js";
+import { connectDb, disconnectDb } from "./db.js";
 
-import app from "./app";
-import { connectDb, disconnectDb } from "./db";
-import config from "./utils/config";
-import logger from "./utils/logger";
-
+const port = process.env.PORT || 3100;
 const server = http.createServer(app);
 
 server.on("listening", () => {
-	const addr = server.address();
-	const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
-	logger.info("listening on: %s", bind);
+  console.log(`listening on port ${port}`);
 });
 
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
-connectDb().then(() => server.listen(config.port));
+connectDb().then(() => server.listen(port));
