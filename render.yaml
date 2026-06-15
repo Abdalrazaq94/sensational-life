@@ -5,7 +5,7 @@ services:
     name: sensational-life 
     region: frankfurt
     env: node
-    buildCommand: npm ci --include dev; npm run build; npm prune --omit dev
+    buildCommand: npm install; npm run build
     startCommand: npm start
     healthCheckPath: /health
     envVars:
