@@ -18,6 +18,10 @@ export const configuredHelmet = () =>
 	});
 
 export const httpsOnly = () => (req, res, next) => {
+	// Skip HTTPS redirect for healthcheck endpoint
+	if (req.path === "/api/health") {
+		return next();
+	}
 	if (!req.secure) {
 		return res.redirect(301, `https://${req.headers.host}${req.originalUrl}`);
 	}
@@ -46,3 +50,4 @@ export const pushStateRouting = (apiRoot, staticDir) => (req, res, next) => {
 	}
 	next();
 };
+
