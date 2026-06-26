@@ -11,4 +11,12 @@ server.on("listening", () => {
 
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
-connectDb().then(() => server.listen(port));
+// Start server immediately, attempt DB connection in background
+server.listen(port);
+
+// Try to connect to database, but don't block server startup
+connectDb().catch((err) => {
+  console.error("Failed to connect to database on startup:", err.message);
+  console.log("Server is running but database is unavailable");
+});
+
