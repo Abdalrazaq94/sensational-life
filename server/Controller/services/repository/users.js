@@ -12,7 +12,7 @@ export const getUserByEmail = (email) => {
 	return new Promise((resolve, reject) => {
 		db.query("SELECT * FROM users where email = $1", [email], (err, result) => {
 			if (err) {
-				reject(err);
+				return reject(err);
 			}
 			resolve(result.rows[0]);
 		});
@@ -26,7 +26,7 @@ export const createUser = ({ name, email, pwd }) => {
 			[name, email, pwd],
 			(err, result) => {
 				if (err) {
-					reject(err);
+					return reject(err);
 				}
 				resolve(result.rows);
 			}
@@ -56,3 +56,4 @@ export const editPassword = (userId, newPassword) => {
 		);
 	});
 };
+
